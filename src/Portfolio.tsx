@@ -107,7 +107,7 @@ const Portfolio = () => {
       title: "Spinder",
       description:
         "Mobile app integrating Spotify API for personalized song recommendations with swipe functionality",
-      tech: ["React Native", "Spotify API", "JavaScript"],
+      tech: ["Java", "Spotify API", "Spring Boot"],
       color: "from-emerald-500 to-teal-700",
       icon: <Smartphone className="w-6 h-6" />,
       points: [
