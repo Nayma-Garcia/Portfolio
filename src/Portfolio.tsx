@@ -10,6 +10,8 @@ import {
   Smartphone,
   Car,
   Heart,
+  AppWindow,
+  Users,
 } from "lucide-react";
 
 // Background Animation Component from 1st Version
@@ -37,6 +39,7 @@ const Portfolio = () => {
     hero: false,
     experience: false,
     projects: false,
+    involvement: false,
     skills: false,
   });
 
@@ -67,17 +70,6 @@ const Portfolio = () => {
         "Developed a  Java ”flagging” mechanism, empowering users to mark policies for printing, enhancing workflow control and reducing document processing errors.",
         "Implemented a document transmission management system using SQL and Java, allowing precise control over customer document dispatch with built-in safeguards to prevent accidental transmissions.",
         "Redesigned the customer-facing policy information page using HTML and CSS, delivering an optimized, user-friendly experience that significantly enhanced accessibility and engagement.",
-      ],
-    },
-    {
-      title: "Software Engineer Peer Mentor",
-      company: "Iowa State University",
-      date: "April 2022 - Current",
-      tech: ["C", "Git", "React"],
-      icon: <Coffee className="w-6 h-6" />,
-      points: [
-        "Supported the growth of first-year software engineering students by offering guidance, resources, and help with core concepts, making the transition to college smoother.",
-        "Planned and led hands-on workshops and group study sessions, building a collaborative learning environment and helping foster a supportive community among peers in the program.",
       ],
     },
   ];
@@ -118,6 +110,43 @@ const Portfolio = () => {
         "Directed the frontend development of the events page, ensuring a seamless user experience.",
         "Applied responsive design techniques using Bootstrap to optimize accessibility across devices.",
         "Delivered a fully functional site within 24 hours, meeting tight deadlines with efficiency.",
+      ],
+    },
+    {
+      title: "This Website!",
+      description:
+        "Developed a personal portfolio website to showcase my projects, experience, and skills in a user-friendly and visually engaging format.",
+      tech: ["React", "TypeScript", "Git"],
+      color: "from-green-500 to-emerald-700",
+      icon: <AppWindow className="w-6 h-6" />,
+      points: [
+        "Built a responsive, interactive interface in React and TypeScript, optimized for smooth user experience and easy navigation.",
+        "Implemented modular, reusable components to simplify updates and maintenance as my project portfolio grows.",
+      ],
+    },
+  ];
+
+  const involvement = [
+    {
+      title: "Software Engineer Peer Mentor",
+      company: "Iowa State University",
+      date: "April 2022 - Current",
+      tech: ["C", "Git", "React"],
+      icon: <Users className="w-6 h-6" />,
+      points: [
+        "Supported the growth of first-year software engineering students by offering guidance, resources, and help with core concepts, making the transition to college smoother.",
+        "Planned and led hands-on workshops and group study sessions, building a collaborative learning environment and helping foster a supportive community among peers in the program.",
+      ],
+    },
+    {
+      title: "Girls Who Code Club | Execitive Board Member",
+      company: "Iowa State University",
+      date: "January 2023 - Current",
+      tech: ["Python", "Git", "HTML/CSS"],
+      icon: <Users className="w-6 h-6" />,
+      points: [
+        "Lead and facilitate technical workshops, empowering members with key programming skills while fostering a collaborative environment for learning and development across various technologies.",
+        "Coordinate meetings with industry partners to organize events, foster collaborations, and ensure accurate record-keeping.",
       ],
     },
   ];
@@ -370,6 +399,83 @@ const Portfolio = () => {
                             transitionDelay: `${i * 50}ms`,
                             transform:
                               activeCard === `project-${index}`
+                                ? "translateX(4px)"
+                                : "none",
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* Involvement Section */}
+        <section
+          data-section="involvement"
+          className={`py-20 px-8 transition-all duration-1000 ${
+            visibleSections.involvement
+              ? "translate-y-0 opacity-100"
+              : "translate-y-10 opacity-0"
+          }`}
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+              Involvement
+            </h2>
+            <div className="grid grid-cols-1 gap-8">
+              {involvement.map((involvement, index) => (
+                <div
+                  key={index}
+                  className="group relative bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1"
+                  onMouseEnter={() => setActiveCard(`involvement-${index}`)}
+                  onMouseLeave={() => setActiveCard(null)}
+                >
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-700 to-green-700 rounded-lg blur opacity-20 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-2 bg-gray-800 rounded-lg transform group-hover:rotate-12 transition-transform duration-300">
+                        {involvement.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">
+                          {involvement.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <ul className="mt-4 space-y-2 mb-6">
+                      {involvement.points.map((point, i) => (
+                        <li
+                          key={i}
+                          className="text-emerald-100 pl-4 border-l-2 border-emerald-600 transform transition-all duration-300"
+                          style={{
+                            transform:
+                              activeCard === `involvement-${index}`
+                                ? "translateX(8px)"
+                                : "none",
+                            transitionDelay: `${i * 100}ms`,
+                          }}
+                        >
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2">
+                      {involvement.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="bg-gray-800 px-3 py-1 rounded-full text-sm transform transition-all duration-300 hover:scale-110 hover:rotate-3 text-emerald-200"
+                          style={{
+                            transitionDelay: `${i * 50}ms`,
+                            transform:
+                              activeCard === `involvement-${index}`
                                 ? "translateX(4px)"
                                 : "none",
                           }}
