@@ -73,11 +73,11 @@ const Portfolio = () => {
       title: "Software Engineer Peer Mentor",
       company: "Iowa State University",
       date: "April 2022 - Current",
+      tech: ["C", "Git", "React"],
       icon: <Coffee className="w-6 h-6" />,
       points: [
-        "Mentored students through challenging coding assignments",
-        "Led Git course teaching version control skills",
-        "Offered career guidance to mentees",
+        "Supported the growth of first-year software engineering students by offering guidance, resources, and help with core concepts, making the transition to college smoother.",
+        "Planned and led hands-on workshops and group study sessions, building a collaborative learning environment and helping foster a supportive community among peers in the program.",
       ],
     },
   ];
@@ -115,9 +115,9 @@ const Portfolio = () => {
       color: "from-emerald-600 to-green-800",
       icon: <Heart className="w-6 h-6" />,
       points: [
-        "Led frontend development for events page",
-        "Implemented responsive design using Bootstrap",
-        "Completed fully functional site within 24 hours",
+        "Directed the frontend development of the events page, ensuring a seamless user experience.",
+        "Applied responsive design techniques using Bootstrap to optimize accessibility across devices.",
+        "Delivered a fully functional site within 24 hours, meeting tight deadlines with efficiency.",
       ],
     },
   ];
