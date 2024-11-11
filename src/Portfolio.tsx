@@ -18,14 +18,14 @@ const AnimatedBackground = () => {
     <div className="fixed inset-0 z-0 overflow-hidden">
       {/* Gradient base */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-emerald-950 to-green-950" />
-      
+
       {/* Animated gradient orbs */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl animate-float-slow" />
         <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-green-600/20 rounded-full blur-3xl animate-float-slower" />
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-teal-600/20 rounded-full blur-3xl animate-float" />
       </div>
-      
+
       {/* Mesh gradient overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0)_0%,rgba(0,0,0,0.5)_100%)]" />
     </div>
@@ -47,21 +47,26 @@ const Portfolio = () => {
       title: "Software Engineering Intern",
       company: "Principal Financial Group",
       date: "May - August 2024",
+      tech: ["Java", "Python", "AWS"],
       icon: <Code className="w-6 h-6" />,
       points: [
-        "Designed and developed a NSK app with a login and chat interface using AWS Lambda and Llama3",
-        "Built online applications using Unqork platform",
-        "Automated testing processes using Selenium and Java Robot",
+        "Implemented a React website, featuring secure login and chat capabilities, where user queries were processed by AWS Lambda functions written in Python, leveraging the Llama3 LLM for accurate, context-aware responses.",
+        "Developed dynamic online applications on the Unqork platform, streamlining workflows and enhancing user experience for life and disability insurance clients through optimized interfaces.",
+        "Automated critical testing processes using Selenium and Java Robot, significantly boosting testing speed and accuracy, resulting in improved overall software quality and stability",
+        "Optimized AWS Lambda functions written in Python by actively monitoring CloudWatch metrics to reduce invocation frequency and minimize runtime, achieving cost efficiency in serverless operations.",
       ],
     },
     {
       title: "Software Developer Intern",
       company: "Farmers Mutual Hail",
       date: "May - August 2023",
+      tech: ["Java", "SQL", "HTML/CSS"],
       icon: <Terminal className="w-6 h-6" />,
       points: [
-        "Modernized outdated company systems by refactoring legacy code",
-        "Utilized SQL and Java to create a document transmission control program",
+        "Engineered a fully automated system in Java to streamline the IT department’s annual user audit process, extending functionality to include non-AD employees (e.g., contractors), significantly improving audit efficiency and accuracy.",
+        "Developed a  Java ”flagging” mechanism, empowering users to mark policies for printing, enhancing workflow control and reducing document processing errors.",
+        "Implemented a document transmission management system using SQL and Java, allowing precise control over customer document dispatch with built-in safeguards to prevent accidental transmissions.",
+        "Redesigned the customer-facing policy information page using HTML and CSS, delivering an optimized, user-friendly experience that significantly enhanced accessibility and engagement.",
       ],
     },
     {
@@ -82,13 +87,12 @@ const Portfolio = () => {
       title: "Spinder",
       description:
         "Mobile app integrating Spotify API for personalized song recommendations with swipe functionality",
-      tech: ["Java", "Spotify API", "JavaScript"],
+      tech: ["Java", "Spotify API", "SpringBoot"],
       color: "from-emerald-500 to-green-700",
       icon: <Smartphone className="w-6 h-6" />,
       points: [
-        "Implemented swipe-based user interface for song discovery",
-        "Integrated Spotify API for personalized recommendations",
-        "Built user profile customization features",
+        "Developed a music discovery app using Java and Spring Boot, integrating Spotify API for personalized song recommendations and playlist creation based on user input.",
+        "Built a user profile system with SQL, enabling users to track top songs, connect with friends, and interact via a chat feature, all deployed with CI/CD.",
       ],
     },
     {
@@ -99,9 +103,8 @@ const Portfolio = () => {
       color: "from-green-500 to-emerald-700",
       icon: <Car className="w-6 h-6" />,
       points: [
-        "Developed reinforcement learning model for autonomous racing",
-        "Optimized model performance through iterative improvements",
-        "Achieved significant reduction in lap times",
+        "Trained and fine-tuned an AWS DeepRacer model using Python and Reinforcement Learning, optimizing the autonomous vehicle’s decision-making for improved racing performance in a simulated environment.",
+        "Utilized a range of AWS services, including S3 for data storage and Reinforcement Learning for model training, enabling continuous improvement through real-time data feedback and performance metrics.",
       ],
     },
     {
@@ -188,7 +191,9 @@ const Portfolio = () => {
         <section
           data-section="hero"
           className={`min-h-screen flex flex-col items-center justify-center p-8 transition-all duration-1000 ${
-            visibleSections.hero ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            visibleSections.hero
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-95"
           }`}
         >
           <div className="text-center relative">
@@ -196,7 +201,9 @@ const Portfolio = () => {
             <h1 className="text-6xl font-bold mb-4 leading-tight relative animate-text bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
               Nayma Garcia Virgen
             </h1>
-            <h2 className="text-2xl mb-8 text-emerald-200">Software Engineer</h2>
+            <h2 className="text-2xl mb-8 text-emerald-200">
+              Software Engineer
+            </h2>
             <div className="flex justify-center space-x-6">
               <a
                 href="mailto:nayma.garciav@gmail.com"
@@ -275,6 +282,24 @@ const Portfolio = () => {
                       </li>
                     ))}
                   </ul>
+                  {/* Render tech stack icons */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {(exp.tech || []).map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-gray-800 px-3 py-1 rounded-full text-sm transform transition-all duration-300 hover:scale-110 hover:rotate-3 text-emerald-200"
+                        style={{
+                          transitionDelay: `${i * 50}ms`,
+                          transform:
+                            activeCard === `exp-${index}`
+                              ? "translateX(4px)"
+                              : "none",
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -312,7 +337,9 @@ const Portfolio = () => {
                         <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">
                           {project.title}
                         </h3>
-                        <p className="text-emerald-200">{project.description}</p>
+                        <p className="text-emerald-200">
+                          {project.description}
+                        </p>
                       </div>
                     </div>
 
